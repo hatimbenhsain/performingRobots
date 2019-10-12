@@ -3,6 +3,7 @@
 
 #### Ahmed, Pangna, and Hatim's JellyBot
 
+#### 09/10/2019 Update:
 
 We are making a jellyfish Robot. The JellyBot is composed of 3 main parts:
 
@@ -44,3 +45,7 @@ Features that we might add depending on time and constraints:
   3. Legs that react to the distance sensor, maybe becoming wilder as people get closer.
 
   4. Springs between the body and the legs.
+  
+ #### 12/10/2019 Update:
+ 
+ (Since I haven't posted any proper update, this is going to include everything I've done so far.)
