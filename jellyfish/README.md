@@ -60,4 +60,54 @@ Features that we might add depending on time and constraints:
   
   4. I painted it with a light coat of blue.
   
-  ![image](IMG_20191012_170208.jpg)
+  
+  ![](IMG_20191012_170208.jpg)
+  
+  
+  ![](IMG_20191012_170158.jpg)
+  
+  
+  When I was done with this, I cut a long piece of cardboard to serve as the base of the body. On top of it, I built a sort of christmas tree shape with cardboard so that I could attach neopixels to it, this way, the light could be equally distributed amongst the holes of the Jellybot body. As for the neopixels themselves, I put a few pieces together and connected the power to 5V, ground to ground, and data in to pin 13, and I soldered it all together. Following [this tutorial](https://learn.adafruit.com/adafruit-neopixel-uberguide/basic-connections), I also added a 1000 µF capacitor to "prevent the initial onrush of current from damaging the pixels" between 5V and ground, and a 470 ohm resistor between data in and pin 13. 
+  
+  
+  ![The tree I built for the neopixels](IMG_20191012_165759.jpg)
+  
+  
+  ![The cables coming out of the neopixels](IMG_20191012_165825.jpg)
+  
+  
+  After this, I decided to add a distance sensor to the circuit, as to be able to change the colors coming out of the Jellybot depending on proximity, to simulate fear from predators. I attached the sensor's power to 5V, ground to ground, trigger to pin 9, and echo to pin 10, and soldered everything. I then put zip ties on the cables to have a bit less of a mess and give some relief to the connections. I also used velcro to attach the Arduino to the base as well as a power bank. I used [this tutorial](https://howtomechatronics.com/tutorials/arduino/ultrasonic-sensor-hc-sr04/) to figure out the sensor connections and code.
+  
+  
+  ![The distance sensor](IMG_20191012_165807.jpg)
+  
+  
+  ![Arduino connections](IMG_20191012_165817.jpg)
+  
+  
+  ![Stress relief](IMG_20191012_165845.jpg)
+  
+  
+  ![Schematics for the entire circuit](IMG_20191012_173315.jpg)
+  
+  
+  As for the code, I started by modifying the strandtest example on the Arduino neopixels library to make the colors sweep from purple to blue. Then, I added code that takes data from the distance sensor to change the range of the colors; red to yellow if something is very close, green to blue in the middle, etc. The most difficult part of the code was making it so that the changes in color weren't too choppy/random since the sensor is extremely sensitive. I fixed this by calculating the average of the sensor values every few frames, and using a goTowards function so that the color ranges would change gradually rather than instantly.
+
+
+``` 
+float goTowards(float from, float to){
+  if((from>to && from-lightStep<=to)||(from<to && from+lightStep>=to)||(from==to)){
+    return to;
+  }else if(from>to){
+    return from-=lightStep;
+  }else if(to>from){
+    return from+=lightStep;  
+  }
+}
+```
+
+
+![My friend playing with the distance sensor](Video_20191012174602465_by_videoshow.mp4)
+
+
+For now, I just blu-tack'd the sensor to the body of the Jellybot, as shown in the video, but I plan to eventually put it somewhere stationary so that the movement of the Jellybot doesn't interfere with it, and at chest level rather than leg level, which is easier to detect for the sensor.
