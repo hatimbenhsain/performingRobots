@@ -49,3 +49,15 @@ Features that we might add depending on time and constraints:
  #### 12/10/2019 Update:
  
  (Since I haven't posted any proper update, this is going to include everything I've done so far.)
+ 
+ The first thing I did for this project was building the outer body for the Jellybot, which I wanted to be dome-like, but still made of cardboard for the sake of lightness and not to over-complicate it. I followed [this video](https://youtu.be/W-626HKjzQI) with slight modifications:
+ 
+  1. I used smaller shapes (7 inch)
+  
+  2. I stopped adding pieces after I had made a half-sphere.
+  
+  3. I cut circular holes for light to come out of the jellyfish, and I glued tracing paper to filter it. I also cut a hole on top to carry the Jellybot up and down.
+  
+  4. I painted it with a light coat of blue.
+  
+  
