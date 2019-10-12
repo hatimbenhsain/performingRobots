@@ -60,4 +60,4 @@ Features that we might add depending on time and constraints:
   
   4. I painted it with a light coat of blue.
   
-  ![image](jellyfish/IMG_20191012_170208.jpg)
+  ![image](IMG_20191012_170208.jpg)
