@@ -107,7 +107,7 @@ float goTowards(float from, float to){
 ```
 
 
-![My friend playing with the distance sensor](Video_20191012174602465_by_videoshow.mp4)
+[My friend playing with the distance sensor](Video_20191012174602465_by_videoshow.mp4)
 
 
 For now, I just blu-tack'd the sensor to the body of the Jellybot, as shown in the video, but I plan to eventually put it somewhere stationary so that the movement of the Jellybot doesn't interfere with it, and at chest level rather than leg level, which is easier to detect for the sensor.
