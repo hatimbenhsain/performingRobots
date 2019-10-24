@@ -1,3 +1,5 @@
+#include <Wire.h>
+
 //this code did ** t h a t ** 
 // she, like, really did that
 // sis
@@ -58,6 +60,7 @@ float lightValue;
 
 
 void setup() {
+  Wire.begin();
   // These lines are specifically to support the Adafruit Trinket 5V 16 MHz.
   // Any other board, you can remove this part (but no harm leaving it):
 #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
@@ -115,8 +118,8 @@ void rainbow(int wait) {
   distance= duration*0.034/2;
 // Prints the distance on the Serial Monitor
   Serial.print("Distance: ");
-  //Serial.print(float(distance));
-  //Serial.print(" ");
+  Serial.print(float(distance));
+  Serial.print(" ");
   lightValue=map(float(distance),0.0,273.0,2.0,6.0);
   lightValue=distance*4.0/273.0+2.0;
   lightValue+=3.0;
@@ -129,6 +132,9 @@ void rainbow(int wait) {
     }
    currentAvg=goTowards(currentAvg,lightAvg);
    Serial.println(currentAvg);
+   Wire.beginTransmission(8);
+   Wire.write(int(currentAvg*10)); //currentAvg between 5 and 9
+   Wire.endTransmission();
     for(int j=0;j<strip.numPixels();j++){
       int pixelHue=colorArray[i+j*(65536/768)/strip.numPixels()];
       pixelHue+=65536*currentAvg/6;
