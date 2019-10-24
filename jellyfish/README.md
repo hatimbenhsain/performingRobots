@@ -111,3 +111,50 @@ float goTowards(float from, float to){
 
 
 For now, I just blu-tack'd the sensor to the body of the Jellybot, as shown in the video, but I plan to eventually put it somewhere stationary so that the movement of the Jellybot doesn't interfere with it, and at chest level rather than leg level, which is easier to detect for the sensor.
+
+ #### 24/10/2019 Update:
+ 
+ Completing the Jellybot
+ 
+ After Ahmed completed building the legs/tentacles, we attached it to the Jellybot body's sides, using rubber bands for the sake of wobbliness. Then, we attached the Arduino that controls the leg servos to the rest of the system. Some of the problems we encountered was too much string length, so we had to reduce the number of rubber bands, and we had to make the cables that go from the motors to the arduino longer since they ended up being too short. 
+ 
+ 
+ ![The rubber bands connecting the tentacles to the body](IMG_20191024_010536.jpg)
+ 
+ 
+ Then, I added to my original code parts to make the it able to communicate distance data from my Arduino to Ahmed's and Pangna's. I took the code from [here](https://www.arduino.cc/en/Tutorial/MasterWriter?fbclid=IwAR1DgfeyhnNxPbi3eiOubrvFiZJVtF697opo13W2sDkcsFwpZzBRmvWT6fE). This way, the sensor can make the speed of the lifting mechanism faster, and the tentacles movement more erratic (the closer a body is to the sensor the faster the movement). Code for this can be found on Pangna and Ahmed's respective githubs. 
+ 
+ For the Arduino cable connections, I used the examples on the same website. I connected analog input pin 4, pin 5, and ground of every Arduino together. What I later noticed is that this meant that the Arduino that controlled the neopixels (the master) wouldn't function properly unless every Arduino was turned on. While I passed the connections between the servos arduino and the neopixels arduino easily since they were on the same piece of cardboard, I had to pass the cables up to the lifting mechanism arduino through the hole on top of the Jellybot body. Finally I added some ziplocks for stress relief.
+ 
+ 
+ ![Updated circuit](circuit2.png)
+ 
+ 
+ Now we had to attach the Jellybot to the lifting mechanism, but first, we had to find somewhere to put the system that is high enough so that the Jellybot doesn't drag on the floor, and where there isn't a wall that blocks the Jellybot's movement. We settled on moving the two wooden benches in the IM lab so that they would face each other, and pass a metal bar through the holes at the top with the mechanism screwed to it. We also added an extra metal bar for extra stability and to prevent the motor piece from bending.
+ 
+ 
+ ![The system](IMG_20191024_010551.jpg)
+ 
+ 
+ ![The system 2](IMG_20191023_234953.jpg)
+ 
+ 
+ After this, we attached the string to carry the Jellybot to the spring dangling from the mechanism, which we adjusted several times to have the best kind of movement and so that the Jellybot wasn't too low or too high. And we connected the master/slave cables through the hole on top of the body.
+ 
+ 
+ ![Cables and such](IMG_20191024_010545.jpg)
+ 
+ 
+ While working on all this, the pieces of cardboard inside the body suddenly dissociated and threatened to destroy the entire system had we not caught it in time. I had thought that my build was robust enough, but I didn't account for the additional weight from the Arduino that controls the tentacles, the additional battery pack for it, and the movement up and down that would surely strain the whole thing. To fix this, I added more cardboard triangles, but I knew that this wouldn't be enough for the current system, so I drilled holes into the body and added 3 pieces of string that held the entire thing together. Aditionally, the pieces of string also attach the dome directly to the inner piece rather than just having it lay on top as it previously did. This also meant that it was not harder to look into the system and change cable connections etc, but by this time everything was working properly and for more than 30 seconds. 
+ 
+ 
+ ![The pieces of string inside the body](IMG_20191024_010526.jpg)
+ 
+ 
+  At some point in the process, we also glued velcro to the distance sensor and attached it to a chair at around chest level. I also made Ahmed redo the soldering on it since mine was pretty terrible.
+  
+  
+  ![The sensor](IMG_20191024_114314.jpg)
+  
+  
+  [A video of the Jellybot at work](https://drive.google.com/open?id=1KkYj-iAktZ0UBWY37PWaBK1H8wPveqPp)
