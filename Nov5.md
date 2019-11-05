@@ -41,6 +41,7 @@ Movement:
 - 2 wheel motors
 - 2 caster wheels
 - Battery pack
+- Bluefruit
 
 Rotation (of the body on the base):
 - 2 drive wheels
