@@ -27,3 +27,29 @@ I really wanted to incorporate spider legs in my project but I figured that it w
 
 ![](IMG_20191105_112731.jpg)
 ![](IMG_20191105_112734.jpg)
+
+
+## Technical Needs:
+
+Voice:
+- Mic
+- Wireless speaker
+- (My) computer
+
+Movement:
+- 2 drive wheels
+- 2 wheel motors
+- 2 caster wheels
+- Battery pack
+
+Rotation (of the body on the base):
+- 2 drive wheels
+- 2 wheel motors
+- 2 caster wheels
+- Battery pack
+
+Eyes:
+- Neopixels (150+)
+- 3 servos (for the eyelids)
+- Powerbank
+- Batteries for the servos
