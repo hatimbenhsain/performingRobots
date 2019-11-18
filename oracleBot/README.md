@@ -105,7 +105,10 @@ The second time over, after Michael gave me his advice, I used the special bolts
 ![](IMG_20191118_221601.jpg)
 
 
-Finally, I soldered the cables coming out of the wheel motors to longer cables so that connecting them to the Arduino would be easier, and I passed them inside of the box.
+I also soldered the cables coming out of the wheel motors to longer cables so that connecting them to the Arduino would be easier, and I passed them inside of the box.
 
 
 ![](IMG_20191118_232718.jpg)
+
+
+Finally, I tested my 2 dc motors and 2 servos and they all seem to work fine. I still need 1 more servo though.
