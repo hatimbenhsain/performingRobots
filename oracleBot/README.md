@@ -73,3 +73,39 @@ In the meantime, I worked on making a Max patch that makes a robot voice. What i
 
 
 ![](fftsub.png)
+
+## Update 18/11/2019
+
+I went to the wood shop and built the base for the OracleBot, with the help of Michael and Jon.
+
+The base has two 50cm wide square base and a height of 30cm, with all sides but one covered with plywood and with wood blocks supporting the construction. There is also a hole in the front panel for coin insertion, and a hole in the base to have cables pass through.
+
+
+![](IMG_20191117_154125.jpg)
+
+
+Next, I had to fix the motor wheels to the base, which proved trickier than I thought it would. I mistakenly used the wrong kind of bolts to screw on the wheel motors, and the pieces of wood I used to connect them to the base split in the middle because they were too thin. The structure was also generally unstable, and I had to redo it.
+
+
+![](IMG_20191118_154236.jpg)
+
+
+![](IMG_20191118_154239.jpg)
+
+
+The second time over, after Michael gave me his advice, I used the special bolts for the motors, and connected the metal brackets to the motors directly. Then, I cut up a piece of wood to connect it to a caster wheel. But after screwing the whole thing together, I realized that I had cut the wood too tall and the structure was really unstable, so I cut up the wood shorter and changed the wheels to a triangular shape with only 3 wheels. 
+
+
+![](IMG_20191118_154252.jpg)
+
+
+![](IMG_20191119_011244.jpg)
+
+
+![](IMG_20191118_221601.jpg)
+
+
+Finally, I soldered the cables coming out of the wheel motors to longer cables so that connecting them to the Arduino would be easier, and I passed them inside of the box.
+
+
+![](IMG_20191118_232718.jpg)
