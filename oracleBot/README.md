@@ -96,7 +96,7 @@ Next, I had to fix the motor wheels to the base, which proved trickier than I th
 The second time over, after Michael gave me his advice, I used the special bolts for the motors, and connected the metal brackets to the motors directly. Then, I cut up a piece of wood to connect it to a caster wheel. But after screwing the whole thing together, I realized that I had cut the wood too tall and the structure was really unstable, so I cut up the wood shorter and changed the wheels to a triangular shape with only 3 wheels. 
 
 
-![](IMG_20191118_154252.jpg)
+![](IMG_20191119_012945.jpg)
 
 
 ![](IMG_20191119_011244.jpg)
