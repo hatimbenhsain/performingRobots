@@ -112,3 +112,46 @@ I also soldered the cables coming out of the wheel motors to longer cables so th
 
 
 Finally, I tested my 2 dc motors and 2 servos and they all seem to work fine. I still need 1 more servo though.
+
+## Update 21/11/2019
+
+On class last tuesday, I went to the scene shop to build my robot's face, which was supposed to be in plywood and have a half-circle bend, but after listening to Jon's advice, I decided against it. According to him, the structure for the plywood would be too complicated and time-consuming, and I figured that any other kind of wood would be too heavy for the wheels anyway. I scrapped my plan and decided to make the face out of cardboard. I still needed to build a base and a support rod for it though. The circular base is about 70 cm in diameter and the rod is 160 cm tall. I then screwed them on top of my box. I also drilled in holes to be able to pass wires and plastic cable ties. 
+
+
+![](IMG_20191119_163438.jpg)
+
+
+![](IMG_20191119_163448.jpg)
+
+
+The next thing I did was solder the Bluefruit on my motor shield, for which I just followed the tutorial (and schematic) provided by Michael. This took an abnormally long time because I am bad at soldering. I do not look forward to soldering the neopixels for the eyes.
+
+
+![](IMG_20191120_225703.jpg)
+
+
+![](IMG_20191120_225625.jpg)
+
+
+![](IMG_20191120_225632.jpg)
+
+
+![](https://raw.githubusercontent.com/michaelshiloh/motorShieldAndBluefruit/master/images/bluefruit/diagram.jpg)
+
+
+I still needed to build 80% of my robot, so I had to get started on my face. After scrapping the original concept I didn't really know what to do since I couldn't find a piece of cardboard that's big enough for the whole face. I was thinking of copying the banana beel structure Praggya used for her robot, but it didn't really fit the image of the oracleBot that I had in mind. So I took a walk outside and had an epiphany
+
+
+![](IMG_20191120_234710.jpg)
+
+
+I looked at the ground outside and saw that parts of the tiles kind of looked like angry eyes and a long nose, and I also saw that the angles the pieces made kind of fit what I wanted my face to look like, so I decided to copy it.
+
+
+![](received_1393054254191193.jpeg)
+
+
+![](received_2631430053546347.jpeg)
+
+
+(I'm not done with the face yet)
