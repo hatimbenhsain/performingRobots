@@ -155,3 +155,30 @@ I looked at the ground outside and saw that parts of the tiles kind of looked li
 
 
 (I'm not done with the face yet)
+
+## Update 26/11/2019
+
+I finished making the face out of cardboard pieces, and I cut holes for the eyes and the mouth. I didn't take a good picture of it thought so I'll post one later.
+
+Hooking the face up to the body was tricky, so I asked Michael for help. After getting his advice, I decided to hot glue a bunch of cardboard rods to the central support rod and then glue them to the face, with a lot of triangles. I also added pieces of string last minute. I don't really know right now if it'll hold and I'll need to strengthen it, but I guess I'll know if it all falls down by tomorrow morning.
+
+
+![](IMG_20191126_035345.jpg)
+
+
+After this, I got a battery for my wheel motors, soldered it to my system and velcro'd it to the base, along with the arduino and the powerbank. 
+
+
+![](IMG_20191126_012031.jpg)
+
+
+![](IMG_20191126_012029.jpg)
+
+
+Finally, I followed Michael's tutorial on using the blueFruit and I modified the code in the motorShield example given to make the robot turn in different directions. I recorded the robot moving [here](https://drive.google.com/open?id=1RndNPafpCbciJq6_Pg6yhAGKAsayjquQ). 
+
+In the future, I'd like to add an option for the robot to turn while moving forward if I were to press two directions at the same time (left and forward for example). I think that I have the essentials now, but here's the features I still would like to add:
+
+- Neopixel eyes that change colors
+- Eyelids that blink using servos
+- Making the robot pretty (adding more cardboard pieces in the back for more 3 dimensionality, painting it, adding some sort of a headpiece)
