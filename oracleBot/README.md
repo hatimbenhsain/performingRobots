@@ -182,3 +182,28 @@ In the future, I'd like to add an option for the robot to turn while moving forw
 - Neopixel eyes that change colors
 - Eyelids that blink using servos
 - Making the robot pretty (adding more cardboard pieces in the back for more 3 dimensionality, painting it, adding some sort of a headpiece)
+
+## Update 28/11/2019
+
+Yesterday night, I borrowed a bluetooth speaker from the IM lab and a mic and cables from the equipment center to see how to talking part would work. I had to adjust the gate on my Max patch since there was some feedback between the mic and the speaker even when they were far from each other, but it worked well enough. A problem was that what the voice was actually saying wasn't really clear, so I might modify the patch to mix the normal voice and the processed voice together so that you could still understand it. [Here's a video of sound coming out of the robot.](https://drive.google.com/file/d/1SWn7Q2SJ-PX6ub1K_yO9yq7nzKerfcfE/view?usp=sharing)
+
+Then I started working on the neopixels. Soldering them was a really painful process because the copper part on the LEDs kept breaking off if I moved it around too much, and the solid wires that I used weren't flexible enough. I figured that they would be less messy to work with than stranded wire, but they ended up giving me a lot of trouble and for about 4 hours I was stuck in a cycle of testing the lights, realizing current didn't reach one of them, trying to fix it, accidentally breaking the connections for another one, and replacing it with new pieces. The LEDs I took from the drawer were also not very reliable. [This video](https://youtu.be/QYa7MfUcUzc) helped a lot though.
+
+Initially I had planned to cover the eyes with neopixels, but I realized that this would take too many of them (about 648 of them) and it would just take too long to solder, so I decided instead to have 5 rows of 12 for each eye. I've made two so far, and I've got the third one left to do, as well as coding their behavior and securing the system on my robot and to the arduino. During my process, I realized that the servos for the eyelids would be too tricky to handle, so I might just simulate them with neopixels going on and off, but I'm afraid now that my robot might have too little practical functionality.
+
+[A video of an eye at work with an example code](https://drive.google.com/file/d/1SG9R_COR0_Pv1I3b4KNo0FGJnOfU8f97/view?usp=sharing)
+
+
+![](IMG_20191128_155529.jpg)
+
+
+![](IMG_20191128_155532.jpg)
+
+
+![](IMG_20191128_155945.jpg)
+
+
+![](IMG_20191128_163330.jpg)
+
+
+![](IMG_20191128_133938.jpg)
