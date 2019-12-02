@@ -207,3 +207,28 @@ Initially I had planned to cover the eyes with neopixels, but I realized that th
 
 
 ![](IMG_20191128_133938.jpg)
+
+## Update 2/12/2019
+
+I finished soldering the neopixels together and I taped them to pieces of cardboard. I also added more cardboard on the sides to glue the pieces of wire that stick out on. I also modified the cardboard pieces I'd put behind my robot's eyesockets so that they'd fit the pieces I had now, then I put them up. Then, I soldered a 3-pin screw terminal to my Arduino connected to the powerbank cable and to the 6 pin so that I could easily connect and disconnecting the neopixels to the rest of my system.
+
+
+![](IMG_20191201_194600.jpg)
+
+
+![](IMG_20191202_150150.jpg)
+
+
+After I put everything together, I tested the code to see if everything works fine, but the neopixels seemed to get some sort of interference that didn't let it run smoothly. I realized afterwards that this was because I forgot to connect the ground of the neopixels to the ground of the Arduino, which I've now rectified.
+
+I then added the possibility to move diagonally to my code, which can happen if I press both forward and right/left. I did this by making both of the wheels go forward but with one slower than the other. I noticed then that the robot moved slightly to the right even when going forward, so I should look for a fix for this. I'll charge my motor battery tonight since I haven't gotten to do that yet and see if it helps. 
+
+Then, I started working on the code for the neopixels. The first thing I did was mapping the position of each individual LED to an array so that they would be easier to track (so the top left one of the first eye would be the first one in the array). This was when I started encountering this problem where using an array that was too big (more than 150 integers) would just stop my program from working, which still puzzles me, so I had to find a way to work around it since I have 180 LEDs. 
+
+Second thing I worked on was the blinking of the eyes. This in itself wasn't hard to do, but keeping track of the colors of each LED so that I would restore it at the end of the blinking was easier said than done, and the array size problem made it harder. In the end, I made a system that changed the colors from the based on one initial hue of the leftmost LED that changed over time so that I could just recalculate it when when reeastablishing the colors instead of needing to keep track of each neopixel.
+
+Finally, I made the 3 button on my phone app open and close the 3rd eye.
+
+[blink](https://drive.google.com/open?id=1U2vyyUvFzmR9d2iBpMv5ae-omlJ5iC3U)
+
+[third eye](https://drive.google.com/open?id=1TYcXNYht1bIaIbmNXJHzCiDYe3W7EQ9U)
