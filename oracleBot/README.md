@@ -232,3 +232,32 @@ Finally, I made the 3 button on my phone app open and close the 3rd eye.
 [blink](https://drive.google.com/open?id=1U2vyyUvFzmR9d2iBpMv5ae-omlJ5iC3U)
 
 [third eye](https://drive.google.com/open?id=1TYcXNYht1bIaIbmNXJHzCiDYe3W7EQ9U)
+
+## (Final) Update 15/12/2019
+
+In addition to what the eyes could already do, I made the button 2 on my bluefruit change the eyes to one single random color, which is used at the part where the robot goes "your favorite color is...". The button 1 changes every neopixel to a random color, which is used to show the robot loading information, calculating, or having an error. The button 3 still opens and closes the third eye. The button 4 makes the eyes go brighter and with more saturation, which I use to introduce some variety while the robot is speaking. 
+
+I also fixed the robot walking in a skewed direction when going forward after testing the motors and adjusting the speed, and I made it possible to move diagonally backwards. 
+
+After this, my robot was functionally done, so I worked a bit on the way it looked. I first tried a straw wig from the prop shop but it didn't really look right, so I went out to a gift collection shop in the city and bought a beads curtain, which I cut up and glued to the top of my robot's head. I also cut up a cardboard nose and glued it to the face, and I cut up aluminum foil to put around the coin slot. I velcro'd an empty coke can inside of the box right below the coin slot so that putting a coin would make a metallic noise.
+
+As for the performance, I wrote a script which can be found [here](https://docs.google.com/document/d/1mc8oK99ZcNWVnOjzFkwujoQcov5DJmHwMEPRP56nHxc/edit?usp=sharing), and a shorter version with more stage directions [here](https://docs.google.com/document/d/1VrFPgFH1HZpqHsa-KNYwGzadWDxJY4tz6Mw3i6N2MJ8/edit?usp=sharing). In the script, I called the performer who would get their future written Alice based on Gabi's Alice in Wonderland idea. I then practice the script a few times with Gabi as the voice of the robot and Carlos Paez as Alice using the following audio equipment:
+- A bluetooth speaker borrowed from the IM lab
+- A Shure 58 mic from the music equipment center
+- A M-Track interface to connect the mic to my pc
+- A usb cable
+- An XLR cable
+The rehearsals with Carlos went fine, but we eventually realized that it would be a more fun performance if the person didn't know what they were getting into, so we decided at the end to just pick someone from the audience for the Alice role and allow Gabi to improvise a little bit. I would also look for the person's information (full name, birthday, astrological sign) on facebook to freak them out.
+
+[The performance is here, starting around minute 35 and ending at minute 40.](https://drive.google.com/file/d/1B5znKoT-wUyXKrR-d7GGR4OiUYsLh9e6/view?usp=sharing)
+
+Overall, the funcionality of the robot and the performance went well, but it was unfortunate that the sound system didn't really work as intended. While there was nothing wrong with my Max patch (I think), it always takes a long time to set it up and adjust all the levels accordingly, time that I didn't have inbetween performances. I also didn't want to test the voice in front of everyone so that there would still be an element of surprise at the beginning. Gabi still spoke loudly enough so that most people could understand her, so it wasn't that big of a deal. 
+
+
+![](IMG_20191215_170013.jpg)
+
+
+![](IMG_20191211_223443.jpg)
+
+
+![](IMG_20191211_223424.jpg)
