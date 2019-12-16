@@ -1,3 +1,42 @@
+## Overall Project
+
+![](IMG_20191211_223424.jpg)
+
+[The performance](https://drive.google.com/file/d/1B5znKoT-wUyXKrR-d7GGR4OiUYsLh9e6/view?usp=sharing), starts around minute 35 and ends around minute 40.
+
+[The script](https://docs.google.com/document/d/1VrFPgFH1HZpqHsa-KNYwGzadWDxJY4tz6Mw3i6N2MJ8/edit?usp=sharing)
+
+My project is the oracleBot, an almost 2-meter long actor robot built of wood and cardboard that moves around on two wheels and has three eyes that blink and change colors. The oracleBot is controlled by a bluetooth app on my phone. The robot also "speaks" somebody's fortune after they put a coin inside by putting a speaker behind her face connected to a pc with a Max robot voice patch, a mic, and a performer.  
+
+The important parts I used are:
+
+- Neopixels
+- 2 DC motors
+- An Arduino Uno
+- An Adafruit Motorshield
+- A 5V power bank
+- A 12V lithium battery
+- A bluetooth speaker
+- A Shure 58 mic
+- An M-Track interface
+
+- Wood
+- Cardboard
+- A beads curtain
+- An empty coke can
+
+The main problems I encountered are:
+
+- How to build a robot this massive and making sure it doesn't fall apart
+- Balancing the robot correctly
+- How to simulate blinking without servos
+- Motors not going at the same speed and skewing the direction
+- Recalling the color of every LED after turning them off during blinking animation
+- Making the sound coming out robotic yet understandable
+
+This is all discussed further in the progress updates below.
+
+
 ## Final Project Proposal
 
 Idea 1: Orac\ebot
