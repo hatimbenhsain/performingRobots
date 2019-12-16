@@ -125,16 +125,20 @@ bool goingBackward;
 int thirdOrder[60];
 int secondOrder[60];
 
+int state=0;
+
 int saturation=170;
+int brightness=90;
 int hue=0;
 
-uint32_t colors1[12];
+uint32_t myColor;
 //uint32_t colors2[12];
 //uint32_t colors3[12];
 
 int frameCount; 
 
 bool thirdEye=false;
+bool addSaturation=false;
 
 /**************************************************************************/
 /*!
@@ -155,39 +159,23 @@ void setup(void)
 
   thirdEye=false;
 
-  //Serial.println(sizeof(secondOrder));
+  state=0;
   
   bool dir=true;
   int k=0;
-  for(int i=0;i<60;i++){
+  for(int i=0;i<60;i++){      //here I set up arrays of neopixel positions so that it's easier to locate them on an xy axis.
      if(i%12==0){
       dir=!dir;
-      //Serial.println(dir);
       k=i;
     }
     if(dir==true){
       secondOrder[i]=119-i;
       thirdOrder[i]=179-(11-(i%12))-k;
-      //correctOrder[i+120]=179-i;
     }else if(dir==false){
       secondOrder[i]=119-(11-(i%12))-k;
       thirdOrder[i]=179-i;
-      //correctOrder[i+120]=179-(12-(i%12))-k*3;
-      //Serial.println(firstOrder[i]);
     }
-
-    //Serial.println(i%12);
   }
-
-  //Serial.println(sizeof(thirdOrder));
-
-  /*for(int i=0;i<180;i++){
-    Serial.println("Order next");
-    Serial.println(i);
-    Serial.println(correctOrder[i]);
-    correctOrder[i]=correctOrder[i];
-  }*/
-
   
   goingForward=false;
   goingBackward=false;
@@ -201,7 +189,7 @@ void setup(void)
 
   // turn on motor
   myMotor->run(RELEASE);
-    myMotor2->run(RELEASE);
+  myMotor2->run(RELEASE);
 
 
   
@@ -280,14 +268,21 @@ void loop(void)
 {
   //strip.clear();
   /* Wait for new data to arrive */
-  Serial.println(frameCount);
+  //Serial.println(frameCount);
 
   frameCount++;
 
   if(frameCount%5==0){
     blink();
   }
-  colorCycle();
+  if(state==0){           //colorCycle changes the hue slowly
+    colorCycle();
+  }else if(state==1){     //multiColor assigns a random color to every LED
+    multiColor();
+  }else if(state==2){     //fullColor assigns one random color to all the LEDs
+    fullColor();
+  }
+
   uint8_t len = readPacket(&ble, BLE_READPACKET_TIMEOUT);
   if (len == 0) return;
 
@@ -321,26 +316,27 @@ void loop(void)
 
     if (pressed ) {
       if(buttnum==1){
-       for(int i=0;i<60;i++){
-          //int currentPix=correctOrder[i]; 
-          strip.setPixelColor(secondOrder[i],255,0,0);
-          strip.setPixelColor(thirdOrder[i],255,0,0);
-          strip.setPixelColor(secondOrder[i]-60,255,0,0);
-          /*Serial.println("Order next");
-          Serial.println(i+120);
-          Serial.println(correctOrder[i+120]);*/   
-          //delay(50);
-       }
+        if(state!=1){           //goes multicolor
+            state=1;
+        }else{                  //goes back to normal
+            state=0;
+        }
        strip.show();
-      }else if(buttnum==2){
-       
-          strip.setPixelColor(59,0,255,0);
-          strip.setPixelColor(119,0,255,0);
-          strip.setPixelColor(179,0,255,0);
-
-          strip.show();
-
-      }else if(buttnum==3){
+       Serial.println("current state");
+       Serial.println(state);
+      }else if(buttnum==2){     //a random color is picked
+        if(state!=2){
+          state=2;
+          int k=random(0,65536);
+          myColor=strip.ColorHSV(k,255,255);
+          Serial.println("current hue");
+          Serial.println(k);
+        }else{                  //goes back to normal
+          state=0;
+        }
+        Serial.println("current state");
+       Serial.println(state);
+      }else if(buttnum==3){     //opens or closes third eye
        thirdEye=!thirdEye;
        Serial.println("third eye");
        if(thirdEye==true){
@@ -349,25 +345,27 @@ void loop(void)
         thirdEyeClose();
        }
       }else if(buttnum==4){
-       for(int i=0;i<strip.numPixels();i++){
-          strip.setPixelColor(i,0,255,255);
-          strip.show();
-       }
+        addSaturation=!addSaturation;     //adds brightness and saturation
+        if(brightness==90){
+          brightness=255;
+        }else{
+          brightness=90;
+        }
       }
       if (buttnum == 5) {
         Serial.print(" Forward");
         myMotor->setSpeed(255);
-        myMotor2->setSpeed(255);
-        myMotor->run(BACKWARD);
-        myMotor2->run(FORWARD);
+        myMotor2->setSpeed(180);
+        myMotor->run(FORWARD);
+        myMotor2->run(BACKWARD);
         goingForward=true;
       }
       if (buttnum == 6) {
       Serial.print(" Backward");
         myMotor->setSpeed(255);
         myMotor2->setSpeed(255);
-      myMotor->run(FORWARD);
-      myMotor2->run(BACKWARD);
+      myMotor->run(BACKWARD);
+      myMotor2->run(FORWARD);
       goingBackward=true;
       }
       if (buttnum == 8) {
@@ -375,10 +373,16 @@ void loop(void)
       if(goingForward==false && goingBackward==false){
         myMotor->setSpeed(255);
         myMotor2->setSpeed(255);
-      myMotor->run(FORWARD);
-      myMotor2->run(FORWARD);
+      myMotor->run(BACKWARD);
+      myMotor2->run(BACKWARD);
       }
-      else if(goingForward==true && goingBackward==false){
+      else if(goingForward==true && goingBackward==false){      //moves diagonally forward
+        Serial.print("Sliding");
+        myMotor->setSpeed(125);
+        myMotor2->setSpeed(255);
+        myMotor->run(FORWARD);
+        myMotor2->run(BACKWARD);
+      }else if(goingBackward==true && goingForward==false){     //moves diagonally backward
         Serial.print("Sliding");
         myMotor->setSpeed(125);
         myMotor2->setSpeed(255);
@@ -391,12 +395,18 @@ void loop(void)
       if(goingForward==false && goingBackward==false){
         myMotor->setSpeed(255);
         myMotor2->setSpeed(255);
-      myMotor->run(BACKWARD);
-      myMotor2->run(BACKWARD);
-      }else if(goingForward==true && goingBackward==false){
+      myMotor->run(FORWARD);
+      myMotor2->run(FORWARD);
+      }else if(goingForward==true && goingBackward==false){   //diagonally forward
         Serial.print("Sliding");
         myMotor->setSpeed(255);
-        myMotor2->setSpeed(125);
+        myMotor2->setSpeed(70);
+        myMotor->run(FORWARD);
+        myMotor2->run(BACKWARD);
+      }else if(goingForward==false && goingBackward==true){   //diagonally backward
+        Serial.print("Sliding");
+        myMotor->setSpeed(255);
+        myMotor2->setSpeed(70);
         myMotor->run(BACKWARD);
         myMotor2->run(FORWARD);
       }
@@ -489,7 +499,7 @@ void colorWipe(uint32_t color, int wait) {
 void blink(){
   if(strip.getPixelColor(secondOrder[0]-60)!=0){
 
-    for(int j=1;j<6;j++){
+    for(int j=1;j<6;j++){           //every LED row is progressively turned off
       for(int i=0;i<12*j;i++){
         strip.setPixelColor(secondOrder[i]-60,strip.ColorHSV(0,255,0));
         strip.setPixelColor(secondOrder[i],strip.ColorHSV(0,255,0));
@@ -502,12 +512,26 @@ void blink(){
     }
     delay(100);
 
-    for(int j=1;j<6;j++){
+    for(int j=1;j<6;j++){   //turned back on. the colors are different depending on the state.
       for(int i=0;i<12*j;i++){
-        strip.setPixelColor(secondOrder[59-i]-60,strip.ColorHSV(hue+256*(11-(i%12)),saturation,255));
-        strip.setPixelColor(secondOrder[59-i],strip.ColorHSV(hue+256*(35-(i%12)),saturation,255));
+        if(state==0){
+          strip.setPixelColor(secondOrder[59-i]-60,strip.ColorHSV(hue+256*(11-(i%12)),saturation,brightness));
+          strip.setPixelColor(secondOrder[59-i],strip.ColorHSV(hue+256*(35-(i%12)),saturation,brightness));
+        }else if(state==1){
+          strip.setPixelColor(secondOrder[59-i]-60,random(0,255),random(0,255),random(0,255));
+          strip.setPixelColor(secondOrder[59-i],random(0,255),random(0,255),random(0,255));
+        }else if(state==2){
+          strip.setPixelColor(secondOrder[59-i]-60,myColor);
+          strip.setPixelColor(secondOrder[59-i],myColor);          
+        }
         if(thirdEye==true){
-          strip.setPixelColor(thirdOrder[59-i],strip.ColorHSV(hue+256*(23-(i%12)),saturation,255)); 
+          if(state==0){
+            strip.setPixelColor(thirdOrder[59-i],strip.ColorHSV(hue+256*(23-(i%12)),saturation,brightness)); 
+          }else if(state==1){
+            strip.setPixelColor(thirdOrder[59-i],random(0,255),random(0,255),random(0,255)); 
+          }else if(state==2){
+            strip.setPixelColor(thirdOrder[59-i],myColor); 
+          }
         }
       }
       strip.show();
@@ -519,26 +543,34 @@ void blink(){
 }
 
 void colorCycle(){
+  if(addSaturation==true && saturation<=230){         //saturation progressively increases or decreases depending on the state
+    saturation+=20;
+  }else if(addSaturation==false && saturation>150){
+    saturation-=20;
+  }
   Serial.println(thirdEye);
   saturation=saturation+random(-10,10);
-  for(int i=0;i<12;i++){
+  if(saturation>255){                             
+    saturation=255;
+  }
+  for(int i=0;i<12;i++){                              //hue changes a bit every frame
     int currentHue=hue+i*256;
     for(int j=0;j<5;j++){
-      strip.setPixelColor(secondOrder[i+j*12]-60,strip.ColorHSV(currentHue,saturation,255));
+      strip.setPixelColor(secondOrder[i+j*12]-60,strip.ColorHSV(currentHue,saturation,brightness));
     }
   }
   if(thirdEye==true){
     for(int i=0;i<12;i++){
       int currentHue=hue+(i+12)*256;
       for(int j=0;j<5;j++){
-        strip.setPixelColor(thirdOrder[i+j*12],strip.ColorHSV(currentHue,saturation,255));
+        strip.setPixelColor(thirdOrder[i+j*12],strip.ColorHSV(currentHue,saturation,brightness));
       }
     }
   }
   for(int i=0;i<12;i++){
     int currentHue=hue+(i+24)*256;
     for(int j=0;j<5;j++){
-      strip.setPixelColor(secondOrder[i+j*12],strip.ColorHSV(currentHue,saturation,255));
+      strip.setPixelColor(secondOrder[i+j*12],strip.ColorHSV(currentHue,saturation,brightness));
     }
   }
 
@@ -546,7 +578,55 @@ void colorCycle(){
   hue+=500;
 }
 
-void thirdEyeClose(){
+void multiColor(){                          //shows a different random color on all LEDs
+  for(int i=0;i<12;i++){
+  int currentHue=hue+i*256;
+  for(int j=0;j<5;j++){
+      strip.setPixelColor(secondOrder[i+j*12]-60,random(0,255),random(0,255),random(0,255));
+    }
+  }
+  if(thirdEye==true){
+    for(int i=0;i<12;i++){
+      int currentHue=hue+(i+12)*256;
+      for(int j=0;j<5;j++){
+        strip.setPixelColor(thirdOrder[i+j*12],random(0,255),random(0,255),random(0,255));
+      }
+    }
+  }
+  for(int i=0;i<12;i++){
+    int currentHue=hue+(i+24)*256;
+    for(int j=0;j<5;j++){
+      strip.setPixelColor(secondOrder[i+j*12],random(0,255),random(0,255),random(0,255));
+    }
+  }
+  strip.show();
+}
+
+void fullColor(){                     //shows one single color on all LEDs
+  for(int i=0;i<12;i++){
+  int currentHue=hue+i*256;
+  for(int j=0;j<5;j++){
+      strip.setPixelColor(secondOrder[i+j*12]-60,myColor);
+    }
+  }
+  if(thirdEye==true){
+    for(int i=0;i<12;i++){
+      int currentHue=hue+(i+12)*256;
+      for(int j=0;j<5;j++){
+        strip.setPixelColor(thirdOrder[i+j*12],myColor);
+      }
+    }
+  }
+  for(int i=0;i<12;i++){
+    int currentHue=hue+(i+24)*256;
+    for(int j=0;j<5;j++){
+      strip.setPixelColor(secondOrder[i+j*12],myColor);
+    }
+  }
+  strip.show();
+}
+
+void thirdEyeClose(){                   //closing the third eye, similar to how blinking works
     for(int j=1;j<6;j++){
       for(int i=0;i<12*j;i++){
         strip.setPixelColor(thirdOrder[i],strip.ColorHSV(0,255,0));
@@ -557,10 +637,20 @@ void thirdEyeClose(){
     delay(100);
 }
 
-void thirdEyeOpen(){
+void thirdEyeOpen(){                  //opening third eye, similar to how opening an eye in the blinking function works
    for(int j=1;j<6;j++){
-      for(int i=0;i<12*j;i++){
-        strip.setPixelColor(thirdOrder[59-i],strip.ColorHSV(hue+256*(23-(i%12)),saturation,255)); 
+      if(state==0){
+        for(int i=0;i<12*j;i++){
+          strip.setPixelColor(thirdOrder[59-i],strip.ColorHSV(hue+256*(23-(i%12)),saturation,brightness)); 
+        }
+      }else if(state==1){
+        for(int i=0;i<12*j;i++){
+          strip.setPixelColor(thirdOrder[59-i],random(0,255),random(0,255),random(0,255)); 
+        }
+      }else if(state==2){
+        for(int i=0;i<12*j;i++){
+          strip.setPixelColor(thirdOrder[59-i],myColor); 
+        }        
       }
       strip.show();
       delay(50);
