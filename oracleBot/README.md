@@ -8,6 +8,13 @@
 
 My project is the oracleBot, an almost 2-meter long actor robot built of wood and cardboard that moves around on two wheels and has three eyes that blink and change colors. The oracleBot is controlled by a bluetooth app on my phone. The robot also "speaks" somebody's fortune after they put a coin inside by putting a speaker behind her face connected to a pc with a Max robot voice patch, a mic, and a performer.  
 
+
+![](P1001483.JPG)
+
+
+![](P1001477.JPG)
+
+
 The important parts I used are:
 
 - Neopixels
